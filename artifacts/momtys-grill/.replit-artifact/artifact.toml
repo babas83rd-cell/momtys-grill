@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Momty's Grill"
+description = "A warm, menu-first restaurant website for Momty's Grill, helping neighborhood guests browse the food, learn the story, and find their way in."
+version = "1.0.0"
+id = "artifacts/momtys-grill"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22559
+
+[services.development]
+run = "pnpm --filter @workspace/momtys-grill run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/momtys-grill", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/momtys-grill/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22559"
+BASE_PATH = "/"
