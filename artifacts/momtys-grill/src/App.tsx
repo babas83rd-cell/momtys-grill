@@ -10,6 +10,8 @@ import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
+const siteBase = import.meta.env.BASE_URL;
+const assetPath = (path: string) => `${siteBase}${path.replace(/^\/+/, '')}`;
 
 const locations = [
   {
@@ -24,12 +26,12 @@ const locations = [
     phoneHref: "tel:+17732319191",
     hours: ["MON–THU 10A–12A", "FRI–SAT 10A–1A", "SUN 11A–10P"],
     menuImages: [
-      { src: "/menus/king-drive/sandwiches-burgers.webp", title: "Sandwiches & Burgers", alt: "King Drive menu featuring fish, crispy chicken, grilled chicken sandwiches, cheeseburgers and specialty burgers" },
-      { src: "/menus/king-drive/chicken-seafood.webp", title: "Chicken & Seafood", alt: "King Drive menu featuring chicken wings, party wings, tenders, nuggets, catfish and shrimp" },
-      { src: "/menus/king-drive/philly-sandwiches.webp", title: "Philly Sandwiches", alt: "King Drive menu featuring Super Philly, steak, chicken, turkey and crispy Philly sandwiches" },
-      { src: "/menus/king-drive/chicago-style.webp", title: "Chicago Style", alt: "King Drive menu featuring Italian beef, Polish sausage, corned beef, gyro, Jim Shoe and gyro plate" },
-      { src: "/menus/king-drive/rice-bowls-salads-sides.webp", title: "Bowls, Salads & Sides", alt: "King Drive menu featuring rice bowls, sauces, salads, pizza puffs, cheese sticks, onion rings and fries" },
-      { src: "/menus/king-drive/loaded-fries-drinks-desserts.webp", title: "Loaded Favorites, Drinks & Desserts", alt: "King Drive menu featuring loaded fries, nachos, lemonade slushies, beverages and desserts" },
+      { src: assetPath("/menus/king-drive/sandwiches-burgers.webp"), title: "Sandwiches & Burgers", alt: "King Drive menu featuring fish, crispy chicken, grilled chicken sandwiches, cheeseburgers and specialty burgers" },
+      { src: assetPath("/menus/king-drive/chicken-seafood.webp"), title: "Chicken & Seafood", alt: "King Drive menu featuring chicken wings, party wings, tenders, nuggets, catfish and shrimp" },
+      { src: assetPath("/menus/king-drive/philly-sandwiches.webp"), title: "Philly Sandwiches", alt: "King Drive menu featuring Super Philly, steak, chicken, turkey and crispy Philly sandwiches" },
+      { src: assetPath("/menus/king-drive/chicago-style.webp"), title: "Chicago Style", alt: "King Drive menu featuring Italian beef, Polish sausage, corned beef, gyro, Jim Shoe and gyro plate" },
+      { src: assetPath("/menus/king-drive/rice-bowls-salads-sides.webp"), title: "Bowls, Salads & Sides", alt: "King Drive menu featuring rice bowls, sauces, salads, pizza puffs, cheese sticks, onion rings and fries" },
+      { src: assetPath("/menus/king-drive/loaded-fries-drinks-desserts.webp"), title: "Loaded Favorites, Drinks & Desserts", alt: "King Drive menu featuring loaded fries, nachos, lemonade slushies, beverages and desserts" },
     ],
   },
   {
@@ -44,11 +46,11 @@ const locations = [
     phoneHref: "tel:+17737330680",
     hours: ["MON–THU 10A–12A", "FRI–SAT 10A–1A", "SUN 11A–10P"],
     menuImages: [
-      { src: "/menus/halsted-street/burgers-sandwiches.webp", title: "Burgers & Sandwiches", alt: "Halsted Street menu featuring cheeseburgers, gyro cheeseburgers, Italian beef burgers, turkey burgers, bacon cheeseburgers, grilled chicken sandwiches and crispy chicken sandwiches" },
-      { src: "/menus/halsted-street/chicken-wings.webp", title: "Chicken Wings & Tenders", alt: "Halsted Street menu featuring whole wings, party wings, chicken tenders and chicken nuggets" },
-      { src: "/menus/halsted-street/rice-bowls-sides.webp", title: "Rice Bowls & Sides", alt: "Halsted Street menu featuring rice bowls, sauces, loaded nachos, loaded fries, fries, onion rings, cheese sticks and pizza puffs" },
-      { src: "/menus/halsted-street/philly-sandwiches.webp", title: "Philly Sandwiches", alt: "Halsted Street menu featuring Super Philly, Philly steak, Philly chicken, Philly mix and crispy Philly sandwiches" },
-      { src: "/menus/halsted-street/chicago-style.webp", title: "Chicago Style", alt: "Halsted Street menu featuring Italian beef, Polish sausage, corned beef, gyro sandwich, Jim Shoe and gyro plate" },
+      { src: assetPath("/menus/halsted-street/burgers-sandwiches.webp"), title: "Burgers & Sandwiches", alt: "Halsted Street menu featuring cheeseburgers, gyro cheeseburgers, Italian beef burgers, turkey burgers, bacon cheeseburgers, grilled chicken sandwiches and crispy chicken sandwiches" },
+      { src: assetPath("/menus/halsted-street/chicken-wings.webp"), title: "Chicken Wings & Tenders", alt: "Halsted Street menu featuring whole wings, party wings, chicken tenders and chicken nuggets" },
+      { src: assetPath("/menus/halsted-street/rice-bowls-sides.webp"), title: "Rice Bowls & Sides", alt: "Halsted Street menu featuring rice bowls, sauces, loaded nachos, loaded fries, fries, onion rings, cheese sticks and pizza puffs" },
+      { src: assetPath("/menus/halsted-street/philly-sandwiches.webp"), title: "Philly Sandwiches", alt: "Halsted Street menu featuring Super Philly, Philly steak, Philly chicken, Philly mix and crispy Philly sandwiches" },
+      { src: assetPath("/menus/halsted-street/chicago-style.webp"), title: "Chicago Style", alt: "Halsted Street menu featuring Italian beef, Polish sausage, corned beef, gyro sandwich, Jim Shoe and gyro plate" },
     ],
   },
   {
@@ -68,7 +70,7 @@ const locations = [
 
 function BrandMark() {
   return (
-    <a href="/" className="flex items-center" data-testid="link-brand-home" aria-label="Momty's Grill home">
+    <a href={siteBase} className="flex items-center" data-testid="link-brand-home" aria-label="Momty's Grill home">
       <img src={businessLogo} alt="Momty's Grill" className="h-12 w-auto max-w-[11rem] object-contain sm:h-14 sm:max-w-[13rem]" data-testid="img-business-logo" />
     </a>
   );
@@ -113,8 +115,8 @@ function Home() {
       </header>
 
       <section className="relative isolate min-h-[calc(100svh-7.5rem)] overflow-hidden bg-[hsl(var(--accent))] text-[hsl(var(--foreground))]" aria-labelledby="hero-title">
-        <video className="absolute inset-0 h-full w-full object-cover object-center" autoPlay muted loop playsInline preload="metadata" poster="/momtys-grill-hero.png" aria-hidden="true" data-testid="video-hero-food">
-          <source src="/momtys-grill-front.mp4" type="video/mp4" />
+        <video className="absolute inset-0 h-full w-full object-cover object-center" autoPlay muted loop playsInline preload="metadata" poster={assetPath("/momtys-grill-hero.png")} aria-hidden="true" data-testid="video-hero-food">
+          <source src={assetPath("/momtys-grill-front.mp4")} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[hsl(var(--accent)/.68)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--accent)/.34)] via-transparent to-[hsl(var(--accent)/.88)]" />
@@ -179,7 +181,7 @@ function Home() {
                   </div>
                 )}
                 <a href={location.directionsUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 font-mono-brand text-[10px] uppercase tracking-[.15em] text-[hsl(var(--primary))] underline underline-offset-4" data-testid={`link-directions-${location.id}`}>Get directions <ArrowRight size={14} /></a>
-                <a href={`/locations/${location.id}`} className="ml-5 inline-flex items-center gap-2 font-mono-brand text-[10px] uppercase tracking-[.15em] text-[hsl(var(--primary)/.82)] underline underline-offset-4" data-testid={`link-location-page-${location.id}`}>View menu <ArrowRight size={14} /></a>
+                <a href={`${siteBase}locations/${location.id}`} className="ml-5 inline-flex items-center gap-2 font-mono-brand text-[10px] uppercase tracking-[.15em] text-[hsl(var(--primary)/.82)] underline underline-offset-4" data-testid={`link-location-page-${location.id}`}>View menu <ArrowRight size={14} /></a>
               </article>
             ))}
           </div>
@@ -213,7 +215,7 @@ function LocationPage({ params }: { params: { id: string } }) {
       </header>
 
       <section className="relative isolate overflow-hidden border-b border-[hsl(var(--accent-foreground)/.16)] px-5 py-20 lg:px-10 lg:py-32">
-        <div className="absolute inset-0 bg-[url('/momtys-grill-hero.png')] bg-cover bg-center opacity-[.12]" aria-hidden="true" />
+        <div className="absolute inset-0 bg-cover bg-center opacity-[.12]" style={{ backgroundImage: `url("${assetPath("/momtys-grill-hero.png")}")` }} aria-hidden="true" />
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--accent)/.45)] to-[hsl(var(--accent))]" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl">
           <p className="font-mono-brand text-[10px] uppercase tracking-[.22em] text-[hsl(var(--secondary))]">Momty’s Grill · Location {String(locationIndex + 1).padStart(2, "0")}</p>
@@ -277,7 +279,7 @@ function LocationPage({ params }: { params: { id: string } }) {
       <footer className="border-t border-[hsl(var(--accent-foreground)/.16)] px-5 py-8 lg:px-10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-5 sm:flex-row sm:items-center">
           <p className="font-display text-2xl font-semibold">Momty’s Grill</p>
-          <a href="/" className="font-mono-brand text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent-foreground)/.7)] underline underline-offset-4 hover:text-[hsl(var(--secondary))]" data-testid="link-location-home">Back to all locations</a>
+          <a href={siteBase} className="font-mono-brand text-[10px] uppercase tracking-[.15em] text-[hsl(var(--accent-foreground)/.7)] underline underline-offset-4 hover:text-[hsl(var(--secondary))]" data-testid="link-location-home">Back to all locations</a>
         </div>
       </footer>
     </main>
